@@ -1,0 +1,1492 @@
+/* =====================================
+   General Settings and Variables
+   ===================================== */
+:root {
+    /* Colors */
+    --primary-color: #FC6011;
+    --primary-light: #FF8B5C;
+    --primary-dark: #E85A10;
+    --secondary-color: #4ABE9D;
+    --dark-color: #242B37;
+    --text-color: #5B5B5E;
+    --text-light: #8A8A8E;
+    --white-color: #FFFFFF;
+    --bg-light: #F9F9F9;
+    --border-color: #EFEFEF;
+    --success-color: #53E88B;
+    --error-color: #FF6B6B;
+    --warning-color: #FFD143;
+    
+    /* Spacing */
+    --section-padding: 80px 0;
+    --container-padding: 20px;
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 50px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+    /* Missing color aliases used across the stylesheet */
+    --yellow-color: var(--warning-color);
+    --bg-light-gray: var(--bg-light);
+    --green-color: var(--secondary-color);
+}
+
+/* Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--white-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--dark-color);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* responsive horizontal padding: min 12px, preferred 2% of viewport, max 40px */
+    padding: 0 clamp(12px, 2vw, 40px);
+}
+
+.section {
+    padding: var(--section-padding);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    box-shadow: 0 6px 20px rgba(252, 96, 17, 0.4);
+    border: 2px solid var(--primary-color);
+    font-weight: 800;
+    padding: 16px 40px;
+    font-size: 20px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 220px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(252, 96, 17, 0.5);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateY(-2px);
+}
+
+.btn-lg {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+.btn-sm {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+/* Section Header */
+.section-header { 
+    text-align: center; 
+    margin: 0 auto 50px; 
+    max-width: 1200px;
+    padding: 0 var(--container-padding);
+}
+.section-header h2 { 
+    font-size: 2.5rem; 
+    color: var(--dark-color); 
+    font-weight: 800; 
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+.section-header h2 span { 
+    color: var(--primary-color);
+    display: block;
+}
+.section-header p { 
+    max-width: 600px; 
+    margin: 0 auto; 
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* =====================================
+   الشريط العلوي (Header)
+   ===================================== */
+header { 
+    background-color: var(--dark-color); 
+    padding: 15px 0; 
+    color: var(--white-color); 
+}
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+.logo { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 10px; 
+    font-weight: 800; 
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 24px;
+}
+.logo img { 
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+/* =====================================
+   القسم الرئيسي (Hero)
+   ===================================== */
+.hero { padding: 60px 0; position: relative; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; }
+.hero-text h1 { font-size: 72px; font-weight: 800; line-height: 1.2; color: var(--dark-color); }
+.hero-text h1 .highlight-orange { color: var(--primary-color); font-weight: 800; }
+.hero-text h1 .brand-name { color: var(--primary-color); font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+.hero-text p { margin: 20px 0 35px; font-size: 18px; max-width: 400px; }
+.hero-actions { display: flex; align-items: center; gap: 25px; }
+.hero-actions .btn i { margin-left: 10px; }
+.how-to-order { display: flex; align-items: center; gap: 15px; font-weight: 700; color: var(--dark-color); }
+.play-icon { width: 50px; height: 50px; background: var(--white-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); font-size: 16px; color: var(--primary-color); transition: transform 0.3s; }
+.how-to-order:hover .play-icon { transform: scale(1.1); }
+.hero-image-wrapper { display: flex; justify-content: center; align-items: center; }
+.hero-main-image { width: 100%; max-width: 600px; height: auto; }
+.delivery-info { display: flex; flex-direction: column; gap: 20px; position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 4; }
+.info-item { display: flex; align-items: center; gap: 15px; background: var(--white-color); padding: 12px 18px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.07); width: 250px; }
+.info-item i { font-size: 22px; color: var(--primary-color); }
+.info-item p { font-weight: 700; color: var(--dark-color); font-size: 15px; margin: 0; line-height: 1.3; }
+.info-item span { font-size: 12px; color: var(--text-color); }
+
+/* =====================================
+   قسم تحميل التطبيق
+   ===================================== */
+.download-app { padding: 0; margin-top: 100px; position: relative; }
+.download-content { background-color: var(--primary-color); border-radius: 50px; padding: 60px; display: grid; grid-template-columns: 1fr 320px; align-items: center; gap: 80px; position: relative; }
+.app-showcase { 
+    margin: 0 auto;
+    position: relative;
+    width: 240px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-frame { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.app-screen { 
+    position: absolute;
+    width: 218px;  /* 90.8% of frame width */
+    height: 472px; /* 94.4% of frame height */
+    object-fit: cover;
+    border-radius: 22px;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+.app-text h2 { font-size: 48px; color: var(--white-color); font-weight: 800; margin-bottom: 25px; }
+.app-text p { color: var(--white-color); opacity: 1; }
+.app-text { color: var(--white-color); }
+.user-avatars { display: flex; align-items: center; margin-bottom: 30px; }
+.user-avatars img { width: 45px; height: 45px; border-radius: 50%; border: 3px solid var(--white-color); margin-right: -15px; }
+.user-avatars .arrow-icon { width: 45px; height: 45px; border-radius: 50%; background-color: var(--white-color); color: var(--primary-color); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-right: 20px; cursor: pointer; }
+.user-avatars .users-count { color: var(--white-color); font-weight: 600; font-size: 16px; margin-right: 15px; }
+.app-ratings { display: flex; gap: 20px; }
+.rating-card { background-color: var(--white-color); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; width: 160px; }
+.store-logo { height: 60px; width: 60px; background-size: contain; background-repeat: no-repeat; background-position: center; }
+.store-logo.google-play { background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg' ); }
+.store-logo.app-store { background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg' ); }
+.rating-card .stars { color: var(--yellow-color); font-size: 14px; }
+.rating-card p { font-weight: 700; color: var(--dark-color); font-size: 16px; margin: 0; }
+.pizza-deco { position: absolute; top: -60px; right: 40px; width: 160px; z-index: 1; transform: rotate(15deg); }
+.drink-deco { position: absolute; top: -40px; right: 45%; width: 80px; z-index: 3; transform: rotate(-15deg); }
+
+/* =====================================
+   قسم أفضل الفئات
+   ===================================== */
+.categories { padding: var(--section-padding); background-color: var(--bg-light-gray); }
+.categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.category-card { background: var(--white-color); border-radius: 20px; text-align: center; padding: 30px 20px; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; }
+.category-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+.category-card img { height: 180px; width: 100%; object-fit: contain; margin-bottom: 20px; border-radius: 20px; }
+.category-card h3 { font-size: 22px; color: var(--dark-color); font-weight: 700; margin-bottom: 10px; }
+.category-card a { color: var(--primary-color); font-weight: 700; }
+.category-card a i { margin-right: 5px; transition: margin-right 0.3s; }
+.category-card a:hover i { margin-right: 10px; }
+
+/* =====================================
+   قسم توصيل الطعام الأسرع
+   ===================================== */
+.fastest-delivery { padding: 60px 0; background-color: #1a1f2e; color: var(--white-color); }
+.delivery-content { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; background-color: #000000; padding: 50px; border-radius: 20px; }
+.delivery-text h2 { font-size: 44px; font-weight: 800; line-height: 1.3; margin-bottom: 15px; color: var(--white-color); }
+.delivery-text h2 .highlight-orange { color: var(--primary-color); }
+.delivery-text p { color: rgba(255,255,255,0.8); margin-bottom: 30px; font-size: 16px; }
+.delivery-features { display: flex; flex-direction: column; gap: 20px; }
+.feature { font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 15px; }
+.feature i { color: var(--primary-color); font-size: 24px; }
+.delivery-image img { filter: drop-shadow(0 30px 30px rgba(0,0,0,0.4)); border-radius: 15px; }
+
+/* =====================================
+   قسم كيف نخدمك
+   ===================================== */
+.how-we-serve { padding: var(--section-padding); }
+.serve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.serve-card { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.serve-card img { height: 180px; width: 100%; object-fit: contain; margin: 0 auto 25px; border-radius: 20px; }
+.serve-card h3 { font-size: 22px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px; }
+.serve-card p { font-size: 15px; max-width: 250px; margin: 0 auto; }
+
+/* =====================================
+   قسم حلويات ومشروبات (جديد)
+   ===================================== */
+.sweets-drinks { padding-bottom: var(--section-padding); background-color: var(--bg-light-gray); }
+.sweets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.sweet-card { background: var(--white-color); border-radius: 20px; text-align: center; padding: 30px 20px; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.sweet-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+.sweet-card img { height: 200px; width: 100%; object-fit: contain; margin: 0 auto 20px; border-radius: 15px; }
+.sweet-card h3 { font-size: 20px; color: var(--dark-color); font-weight: 700; }
+.sweet-card p { font-size: 14px; color: var(--text-color); margin-bottom: 10px; }
+
+/* =====================================
+   قسم العروض
+   ===================================== */
+.offers { padding: var(--section-padding); }
+.offers-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; align-items: start; }
+.offer-card { position: relative; border-radius: 20px; overflow: hidden; }
+.offer-card img { width: 100%; height: 100%; object-fit: cover; }
+.offer-card.large { height: 425px; }
+.offer-card.small { height: 200px; }
+.offers-column { display: flex; flex-direction: column; gap: 25px; }
+.offer-card .offer-details { position: absolute; bottom: 30px; right: 30px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; backdrop-filter: blur(5px); }
+.offer-card.large h3 { font-size: 28px; color: var(--white-color); font-weight: 800; max-width: 250px; line-height: 1.4; margin-bottom: 20px; }
+.offer-card.large p { color: var(--white-color); margin-bottom: 15px; }
+.btn-secondary { background-color: var(--yellow-color); color: var(--dark-color); }
+.btn-secondary:hover { background-color: #f0c232; }
+.offer-card .btn-seco.btn-dark { 
+    background-color: var(--primary-color); 
+    color: var(--white-color); 
+    border: 2px solid var(--white-color);
+    font-weight: 700;
+    padding: 12px 30px;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.offer-card .btn-dark:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.offer-details-small { position: absolute; top: 20px; right: 20px; text-align: right; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; }
+.offer-details-small h3 { font-size: 20px; font-weight: 800; color: var(--white-color); margin-bottom: 5px; }
+.offer-details-small p { font-weight: 500; color: var(--white-color); font-size: 14px; }
+
+/* =====================================
+   قسم المطاعم الشريكة
+   ===================================== */
+.restaurants-cta { padding: var(--section-padding); background-color: var(--green-color); }
+.cta-content { display: flex; flex-direction: column; align-items: center; gap: 50px; text-align: center; }
+.cta-text h2 { font-size: 40px; font-weight: 800; color: var(--dark-color); margin-bottom: 15px; }
+.cta-text p { font-size: 18px; color: var(--dark-color); margin-bottom: 25px; }
+.cta-text .btn { display: inline-block; }
+.restaurant-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 30px; width: 100%; max-width: 600px; }
+.restaurant-logo { height: 70px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 10px; transition: all 0.3s, filter 0.3s; filter: grayscale(100%); font-weight: 700; font-size: 16px; color: var(--dark-color); text-align: center; padding: 10px; border: 2px solid rgba(255,255,255,0.2); }
+.restaurant-logo:hover { transform: scale(1.15); filter: grayscale(0%); background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); }
+
+/* =====================================
+   قسم الدعوة للعمل
+   ===================================== */
+.cta-section { padding: var(--section-padding); background: linear-gradient(135deg, var(--primary-color), #ff8c42); color: var(--white-color); }
+.cta-content { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 50px; }
+.cta-text h2 { font-size: 42px; font-weight: 800; margin-bottom: 20px; }
+.cta-text p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+.cta-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
+.cta-buttons .btn { padding: 15px 30px; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+.cta-buttons .btn i { font-size: 18px; }
+.cta-stats { display: flex; justify-content: space-around; }
+.stat-item { text-align: center; }
+.stat-number { display: block; font-size: 36px; font-weight: 800; color: var(--yellow-color); }
+.stat-label { font-size: 14px; opacity: 0.9; }
+.user-benefits { padding: var(--section-padding); }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+.benefit-card { background: var(--white-color); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+.benefit-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+.benefit-card.customer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #4CAF50, #8BC34A); }
+.benefit-card.restaurant::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #FF9800, #FFC107); }
+.benefit-card.delivery::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #2196F3, #03A9F4); }
+.benefit-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.benefit-header i { font-size: 32px; padding: 15px; border-radius: 50%; }
+.benefit-card.customer .benefit-header i { background: rgba(76, 175, 80, 0.1); color: #4CAF50; }
+.benefit-card.restaurant .benefit-header i { background: rgba(255, 152, 0, 0.1); color: #FF9800; }
+.benefit-card.delivery .benefit-header i { background: rgba(33, 150, 243, 0.1); color: #2196F3; }
+.benefit-header h3 { font-size: 24px; font-weight: 700; margin: 0; }
+.benefit-list { list-style: none; padding: 0; margin: 0; }
+.benefit-list li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 16px; color: var(--text-color); position: relative; padding-right: 25px; }
+.benefit-list li:before { content: '✓'; position: absolute; right: 0; top: 12px; color: var(--primary-color); font-weight: bold; }
+.benefit-list li:last-child { border-bottom: none; }
+.how-app-works { 
+    padding: 80px 0; 
+    background-color: var(--white-color); 
+}
+.works-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    max-width: 1100px;
+    margin: 0 auto;
+    justify-items: center;
+}
+.work-step { 
+    background: var(--white-color); 
+    border-radius: 20px; 
+    padding: 40px 30px; 
+    text-align: center; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 340px;
+}
+.work-step:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12); 
+}
+.step-icon-wrapper { 
+    width: 80px; 
+    height: 80px; 
+    background: linear-gradient(135deg, #FF6B35, #FF8E53);
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto 25px; 
+}
+.step-icon-wrapper i { 
+    font-size: 36px; 
+    color: var(--white-color); 
+}
+.work-step h3 { 
+    font-size: 22px; 
+    color: var(--dark-color); 
+    margin-bottom: 12px; 
+    font-weight: 700; 
+}
+.work-step p { 
+    color: var(--text-light); 
+    font-size: 15px; 
+    line-height: 1.6; 
+    margin: 0;
+}
+.category-card p { font-size: 14px; color: var(--text-color); margin-bottom: 15px; }
+.sweet-card p { font-size: 14px; color: var(--text-color); margin-bottom: 10px; }
+
+/* =====================================
+   قسم التطبيق - تحسينات إضافية
+   ===================================== */
+.app-features { margin: 40px 0; }
+.feature-item { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 25px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; transition: transform 0.3s; }
+.feature-item:hover { transform: translateY(-5px); }
+.feature-item i { font-size: 32px; color: var(--yellow-color); margin-top: 5px; }
+.feature-item h4 { font-size: 20px; color: var(--white-color); margin-bottom: 8px; font-weight: 700; }
+.feature-item p { color: rgba(255,255,255,1); font-size: 16px; line-height: 1.5; font-weight: 500; }
+
+.tech-stack { margin: 40px 0; }
+.tech-stack h3 { font-size: 22px; color: var(--white-color); margin-bottom: 20px; font-weight: 700; }
+.tech-tags { display: flex; flex-wrap: wrap; gap: 15px; }
+.tech-tag { background: rgba(255,255,255,0.2); color: var(--white-color); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+
+.rating-card small { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 5px; display: block; }
+
+/* =====================================
+   قسم العروض - تحسينات إضافية
+   ===================================== */
+.offers { padding: var(--section-padding); }
+.offer-card.large .offer-details p { color: var(--white-color); font-size: 14px; margin-bottom: 15px; }
+.offer-card.large .offer-details { background: rgba(0,0,0,0.3); padding: 30px; border-radius: 15px; backdrop-filter: blur(5px); }
+
+/* =====================================
+   استجابة الموقع (Responsive)
+   ===================================== */
+@media (max-width: 768px) {
+    /* تحسين القسم الرئيسي */
+    .hero {
+        padding: 40px 0 30px;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        font-size: 32px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    .hero-text p {
+        font-size: 16px;
+        margin: 0 auto 25px;
+        max-width: 100%;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .hero-main-image {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .delivery-info {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin: 30px auto 0;
+        width: 100%;
+        max-width: 400px;
+    }
+    /* تحسين قسم التطبيق */
+    .download-app {
+        margin-top: 60px;
+    }
+    
+    .download-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 20px;
+        border-radius: 30px;
+    }
+    
+    .app-showcase {
+        margin: 0 auto;
+        width: 250px;
+        height: 500px;
+    }
+    
+    .app-text {
+        text-align: center;
+    }
+    
+    .app-text h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .user-avatars {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .app-ratings {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .delivery-content { grid-template-columns: 1fr; }
+    .cta-content { grid-template-columns: 1fr; }
+    .offers-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 20px; }
+    .offer-card.large { grid-row: span 1; height: auto; }
+    .offers-column { gap: 20px; }
+    /* تحسين بطاقات المميزات */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .benefit-card {
+        margin-bottom: 20px;
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+    
+    .benefit-header {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .benefit-header i {
+        font-size: 28px;
+        padding: 12px;
+    }
+    
+    .benefit-header h3 {
+        font-size: 20px;
+    }
+    
+    .benefit-list li {
+        font-size: 15px;
+        padding: 10px 0;
+        line-height: 1.5;
+    }
+    /* تحسين خطوات العمل */
+    .how-app-works {
+        padding: 50px 0;
+    }
+    
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .work-step {
+        padding: 30px 20px;
+        border-radius: 15px;
+        max-width: 100%;
+    }
+    
+    .step-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .step-icon-wrapper i {
+        font-size: 32px;
+    }
+    
+    .work-step h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .work-step p {
+        font-size: 14px;
+    }
+    /* تحسين قسم الدعوة للعمل */
+    .cta-section .cta-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .cta-text h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .cta-text p {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+    
+    .cta-stats {
+        flex-wrap: wrap;
+        gap: 25px;
+        margin-top: 30px;
+    }
+    
+    .stat-item {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .stat-number {
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+    .cta-stats { flex-direction: column; gap: 20px; text-align: center; }
+    .stat-number { font-size: 28px; }
+    .app-features { margin: 30px 0; }
+    .feature-item { flex-direction: column; text-align: center; padding: 20px; }
+    .feature-item i { font-size: 28px; margin-bottom: 15px; }
+    .feature-item h4 { font-size: 18px; }
+    .feature-item p { font-size: 15px; }
+    .tech-tags { justify-content: center; flex-wrap: wrap; }
+    .tech-tag { font-size: 12px; padding: 6px 12px; }
+    /* تحسين البطاقات والشعارات */
+    .restaurant-logos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 100%;
+    }
+    
+    .restaurant-logo {
+        height: 60px;
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .categories-grid,
+    .serve-grid,
+    .sweets-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .category-card,
+    .serve-card,
+    .sweet-card {
+        padding: 20px 15px;
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+    .category-card img,
+    .serve-card img,
+    .sweet-card img {
+        height: 160px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .category-card h3,
+    .serve-card h3,
+    .sweet-card h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .category-card p,
+    .serve-card p,
+    .sweet-card p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    /* تحسين العروض الخاصة */
+    .offers-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .offer-card {
+        height: 250px;
+        border-radius: 15px;
+    }
+    
+    .offer-card.large .offer-details {
+        padding: 20px;
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+    }
+    
+    .offer-card.large h3 {
+        font-size: 22px;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .offer-details-small {
+        top: 15px;
+        right: 15px;
+        left: 15px;
+        padding: 12px;
+    }
+    
+    .offer-details-small h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    /* تحسين التذييل */
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        padding: 40px 0;
+    }
+    
+    .footer-logo {
+        margin-bottom: 20px;
+    }
+    
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 15px 0;
+    }
+    
+    .footer-links a {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    
+    .social-links {
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .copyright {
+        font-size: 14px;
+        margin-top: 20px;
+        opacity: 0.8;
+    }
+}
+
+/* متغيرات الألوان والتباعد للهواتف المحمولة */
+:root {
+  --mobile-padding: 15px;
+  --mobile-gap: 20px;
+  --mobile-border-radius: 12px;
+  --mobile-font-size: 14px;
+  --mobile-heading-size: 18px;
+  
+  /* إصلاح شريط الأدوات في الأسفل في iOS */
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+}
+
+/* تحسينات خاصة بالهواتف المحمولة للأداء والمظهر */
+/* =====================================
+   تحسينات شاملة للهواتف المحمولة
+   ===================================== */
+@media (max-width: 768px) {
+    /* تحسين الأداء والتفاعل */
+    * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-text-size-adjust: 100%;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    /* إصلاح مشكلة التكبير في حقول الإدخال على iOS */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+    
+    /* منع التكبير التلقائي في حقول الإدخال */
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+    }
+
+    /* تحسين النصوص */
+    body {
+        font-size: 15px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* إصلاح التمرير النابض في iOS */
+        -webkit-overflow-scrolling: touch;
+        /* منع التكبير التلقائي */
+        touch-action: manipulation;
+        /* إصلاح الارتداد في iOS */
+        overscroll-behavior-y: contain;
+    }
+
+    /* تحسين الأزرار للمس */
+    .btn {
+        min-height: 48px;
+        min-width: 44px;
+        padding: 12px 24px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* تأثير اللمس للأزرار على iOS */
+    .btn:active {
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+    
+    /* إصلاح مشكلة التأخير في النقر على iOS */
+    a, button, [role="button"], input, label, select, textarea {
+        touch-action: manipulation;
+    }
+
+    /* تحسين البطاقات */
+    .category-card, .sweet-card, .serve-card, .benefit-card, .work-step, .offer-card {
+        margin: 0 var(--mobile-padding);
+        border-radius: var(--mobile-border-radius);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* تحسين قسم المميزات */
+    .benefit-list li {
+        padding: 8px 0;
+        font-size: var(--mobile-font-size);
+    }
+
+    /* تحسين قسم كيفية العمل */
+    .step-content {
+        padding: 0 10px;
+    }
+
+    /* تحسين الصور للهواتف المحمولة */
+    img {
+        max-width: 100%;
+        height: auto;
+        -webkit-backface-visibility: hidden;
+        -ms-transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        /* منع اختيار الصور */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    /* منع التحديد في الصور */
+    img, a {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* تحسين التمرير السلس */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* تحسين الخطوط للهواتف المحمولة */
+    .hero-text h1, .app-text h2, .cta-text h2, .section-header h2 {
+        font-weight: 800;
+        text-rendering: optimizeLegibility;
+    }
+
+    /* تحسين البطاقات للمس */
+    .category-card, .sweet-card, .serve-card, .benefit-card, .work-step, .offer-card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(255, 152, 0, 0.1);
+    }
+
+    /* تحسين قسم المطاعم الشريكة للهواتف المحمولة */
+    .restaurant-logos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .restaurant-logo {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.15);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--white-color);
+        text-align: center;
+        padding: 15px;
+        border: 2px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(5px);
+    }
+
+/* إضافات نهائية لتحسين تجربة الهواتف المحمولة */
+@media (max-width: 768px) {
+    /* تحسين شريط التنقل */
+    header {
+        padding: 10px 0;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+    
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-around;
+        gap: 10px;
+        padding: 10px 0 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-links a {
+        padding: 10px 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links a:hover, .nav-links a:active {
+        background-color: rgba(255, 152, 0, 0.1);
+    }
+
+    /* تحسين تأثير البطاقات */
+    .category-card:active, .sweet-card:active, .serve-card:active,
+    .benefit-card:active, .work-step:active, .offer-card:active {
+        transform: scale(0.98);
+    }
+
+    /* تحسين قسم المميزات */
+    .benefit-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,1));
+    }
+
+    /* تحسين قسم كيفية العمل */
+    .work-step {
+        background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,1));
+        border: 1px solid rgba(255, 152, 0, 0.1);
+    }
+
+    /* تحسين قسم التطبيق */
+    .app-features .feature-item {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* تحسين قسم الدعوة للعمل */
+    .cta-section {
+        background: linear-gradient(135deg, var(--primary-color), #ff6b1a);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* تحسين الأزرار */
+    .btn {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+        left: 100%;
+    }
+
+    /* تحسين الصور الدائرية */
+    .user-avatars img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .user-avatars img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+    }
+}
+
+/* =====================================
+   تحسينات خاصة بالهواتف الصغيرة جداً
+   ===================================== */
+@media (max-width: 480px) {
+    /* تحسين النصوص والعناوين */
+    .hero-text h1 {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .hero-text p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .section-header h2 {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+    
+    .section-header p {
+        font-size: 15px;
+    }
+    
+    .app-text h2,
+    .cta-text h2,
+    .delivery-text h2 {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+    
+    /* تحسين الأزرار */
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 24px;
+    }
+    
+    /* تحسين المسافات */
+    .section-padding {
+        padding: 60px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* تحسين البطاقات */
+    .benefit-card,
+    .work-step,
+    .category-card,
+    .serve-card,
+    .sweet-card {
+        padding: 20px 15px;
+    }
+    
+    .benefit-header h3 {
+        font-size: 18px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    /* تحسين عرض التطبيق */
+    .app-showcase {
+        width: 220px;
+        height: 440px;
+    }
+    
+    /* تحسين العروض */
+    .offer-card.large h3 {
+        font-size: 22px;
+    }
+    
+    /* تحسين القوائم */
+    .benefit-list li,
+    .step-content p {
+        font-size: 14px;
+    }
+    
+    /* تحسين تخطيط الأزرار */
+    .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    /* تحسين شريط التنقل */
+    .nav-links {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* تحسين الأيقونات */
+    .feature-item i {
+        font-size: 28px;
+    }
+    
+    .feature-item h4 {
+        font-size: 18px;
+    }
+    
+    .feature-item p {
+        font-size: 14px;
+    }
+    
+    /* تحسين النماذج */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+    
+    /* تحسين الهوامش والمسافات الداخلية */
+    .section-header {
+        margin-bottom: 30px;
+    }
+    
+    /* تحسين الصور */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* ====================================
+       Footer Section - Mobile Styles
+       ==================================== */
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 15px 0;
+        padding: 0 10px;
+    }
+    
+    .footer-links a {
+        font-size: 13px;
+        padding: 6px 10px;
+        color: var(--text-light);
+        transition: color 0.2s ease;
+        white-space: nowrap;
+    }
+    
+    .footer-links a:hover {
+        color: var(--primary-color);
+    }
+    
+    .copyright {
+        font-size: 13px;
+        text-align: center;
+        padding: 10px 0;
+        color: var(--text-light);
+        opacity: 0.8;
+    }
+}
+
+/* =====================================
+   Large Screen Optimizations (1200px and above)
+   ===================================== */
+@media (min-width: 1200px) {
+    /* Container Styles */
+    .container { 
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    /* Typography Enhancements */
+    .hero-text h1 { 
+        font-size: 72px;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+    
+    .app-text h2 { 
+        font-size: 52px;
+        line-height: 1.2;
+        margin-bottom: 25px;
+    }
+    
+    .cta-text h2 { 
+        font-size: 48px;
+        line-height: 1.2;
+    }
+    
+    .section-header h2 { 
+        font-size: 42px;
+        line-height: 1.2;
+    }
+    
+    /* Card Hover Effects */
+    .benefit-card,
+    .work-step,
+    .category-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .benefit-card:hover,
+    .work-step:hover,
+    .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Navigation Enhancements */
+    .nav-links a {
+        position: relative;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 5px;
+        left: 50%;
+        background-color: var(--primary-color);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    
+    .nav-links a:hover::after {
+        width: 70%;
+    }
+}
+
+/* =====================================
+   Tablet Optimizations (769px - 1024px)
+   ===================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    /* Typography Adjustments */
+    .hero-text h1 { 
+        font-size: 48px;
+        line-height: 1.2;
+    }
+    
+    .app-text h2 { 
+        font-size: 40px;
+        line-height: 1.2;
+    }
+    
+    .cta-text h2 { 
+        font-size: 36px;
+        line-height: 1.2;
+    }
+    
+    /* Grid Layouts */
+    .benefits-grid { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .works-grid { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    /* Card Hover Effects */
+    .category-card,
+    .sweet-card,
+    .serve-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .category-card:hover,
+    .sweet-card:hover,
+    .serve-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    /* Button Enhancements */
+    .btn {
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Image Hover Effects */
+    .hero-main-image,
+    .app-showcase img {
+        transition: transform 0.5s ease;
+    }
+    
+    .hero-main-image:hover,
+    .app-showcase img:hover {
+        transform: scale(1.03);
+    }
+}
+
+} 
