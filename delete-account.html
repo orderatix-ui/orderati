@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="طلب حذف حساب تطبيق اوردراتي">
+    <title>اوردراتي | طلب حذف الحساب</title>
+
+    <!-- Google Fonts: Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="delete-account-page">
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="شعار اوردراتي">
+                <span>اوردراتي</span>
+            </a>
+            <div class="nav-actions">
+                <a href="download.html" class="btn btn-primary"><i class="fa-solid fa-download"></i> تحميل التطبيق</a>
+                <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-house"></i> الصفحة الرئيسية</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="delete-hero">
+            <div class="container delete-hero-content">
+                <div>
+                    <p class="pill-label">حماية بياناتك أولويتنا</p>
+                    <h1>طلب حذف حساب <span class="brand-name">اوردراتي</span></h1>
+                    <p class="lead-text">يمكنك تقديم طلب رسمي لحذف حسابك وجميع بياناتك المرتبطة بالتطبيق عبر تعبئة النموذج التالي أو مراسلتنا مباشرة.</p>
+                    <ul class="hero-checklist">
+                        <li><i class="fa-solid fa-circle-check"></i> يتم تنفيذ الطلب خلال مدة أقصاها 7 أيام عمل</li>
+                        <li><i class="fa-solid fa-circle-check"></i> سنقوم بالتواصل معك للتأكيد قبل الإجراء</li>
+                        <li><i class="fa-solid fa-circle-check"></i> يمكنك إلغاء الطلب في أي وقت قبل الإتمام</li>
+                    </ul>
+                </div>
+                <div class="delete-contact-card">
+                    <p>البريد المعتمد لطلبات حذف الحساب:</p>
+                    <a href="mailto:orderati.x@gmail.com?subject=%D8%B7%D9%84%D8%A8%20%D8%AD%D8%B0%D9%81%20%D8%AD%D8%B3%D8%A7%D8%A8" class="email-link">orderati.x@gmail.com</a>
+                    <p class="mini-note">يرجى استخدام نفس البريد المسجل في حسابك لضمان التحقق السريع.</p>
+                    <div class="contact-badges">
+                        <span><i class="fa-solid fa-clock"></i> الرد خلال 24 ساعة</span>
+                        <span><i class="fa-solid fa-shield"></i> سرية تامة</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="delete-details">
+            <div class="container delete-grid">
+                <div class="info-card">
+                    <h2>قبل تقديم الطلب</h2>
+                    <p>لضمان معالجة طلبك بسرعة، الرجاء التأكد من النقاط التالية:</p>
+                    <ul>
+                        <li>تصفية أي أرصدة أو طلبات قائمة بحسابك.</li>
+                        <li>تحديث بيانات الاتصال الخاصة بك لضمان التواصل.</li>
+                        <li>استخدام البريد الإلكتروني المرتبط بالحساب.</li>
+                        <li>إرفاق أي معلومات إضافية تساعد فريق الدعم.</li>
+                    </ul>
+
+                    <div class="steps">
+                        <div class="step">
+                            <span>1</span>
+                            <p>املأ النموذج بالمعلومات الصحيحة.</p>
+                        </div>
+                        <div class="step">
+                            <span>2</span>
+                            <p>اضغط على زر الإرسال لفتح بريدك الإلكتروني.</p>
+                        </div>
+                        <div class="step">
+                            <span>3</span>
+                            <p>أرسل الرسالة من بريدك المسجل وانتظر تأكيدنا.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h2>نموذج طلب حذف الحساب</h2>
+                    <form id="deleteRequestForm" autocomplete="off">
+                        <div class="form-group">
+                            <label for="fullName">الاسم الكامل</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="اكتب اسمك كما هو في التطبيق" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="accountEmail">البريد الإلكتروني المرتبط بالحساب</label>
+                            <input type="email" id="accountEmail" name="accountEmail" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف (اختياري)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="05xxxxxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label for="reason">سبب طلب الحذف</label>
+                            <textarea id="reason" name="reason" rows="4" placeholder="أخبرنا عن سبب رغبتك في حذف الحساب" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="extraNotes">ملاحظات إضافية (اختياري)</label>
+                            <textarea id="extraNotes" name="extraNotes" rows="3" placeholder="أي تفاصيل تساعد فريق الدعم"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary full-width">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            إرسال الطلب الآن
+                        </button>
+                        <p class="form-note">سيتم فتح تطبيق البريد لديك مع رسالة جاهزة يمكنك مراجعتها ثم إرسالها.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="delete-contact">
+            <div class="container">
+                <div class="contact-card">
+                    <h3>بحاجة لمساعدة إضافية؟</h3>
+                    <p>إذا لم يعمل زر الإرسال، يمكنك نسخ النموذج اليدوي أدناه وإرساله إلى البريد <strong>orderati.x@gmail.com</strong>.</p>
+                    <pre>
+الموضوع: طلب حذف حساب اوردراتي
+
+الاسم الكامل:
+البريد الإلكتروني المرتبط بالحساب:
+رقم الهاتف:
+سبب طلب الحذف:
+ملاحظات إضافية:
+                    </pre>
+                    <p>بمجرد استلامنا رسالتك سنقوم بمراجعتها والتواصل معك لتأكيد الحذف.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-top">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="شعار اوردراتي">
+                </a>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 اوردراتي. جميع الحقوق محفوظة.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">سياسة الخصوصية</a>
+                    <a href="#">شروط الاستخدام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
